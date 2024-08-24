@@ -114,68 +114,85 @@ export const HERO_PAGE_CONTENT = {
     ],
     footer: {
         description: "Simplifying Invoicing for Your Success.",
-        features: [
-            {
-                title: "invoices",
-                link: "/"
-            },
-            {
-                title: "Estimates",
-                link: "/"
-            },
-            {
-                title: "Dashboard",
-                link: "/"
-            },
-            {
-                title: "Inventory",
-                link: "/"
-            },
-            {
-                title: "Reports",
-                link: "/"
-            },
-        ],
 
-        Support: [
+        FooterLinks: [
             {
-                title: "Pricing",
-                link: "/"
+                title: "Features",
+                paths: [
+                    {
+                        title: "invoices",
+                        link: "/invoices"
+                    },
+                    {
+                        title: "Estimates",
+                        link: "/Estimates"
+                    },
+                    {
+                        title: "Dashboard",
+                        link: "/Dashboard"
+                    },
+                    {
+                        title: "Inventory",
+                        link: "/Inventory"
+                    },
+                    {
+                        title: "Reports",
+                        link: "/Reports"
+                    },
+                ],
             },
-            {
-                title: "AboutUs",
-                link: "/"
-            },
-            {
-                title: "Blog",
-                link: "/"
-            },
+
             {
                 title: "Support",
-                link: "/"
+                paths: [
+                    {
+                        title: "Pricing",
+                        link: "/Pricing"
+                    },
+                    {
+                        title: "AboutUs",
+                        link: "/AboutUs"
+                    },
+                    {
+                        title: "Blog",
+                        link: "/Blog"
+                    },
+                    {
+                        title: "Support",
+                        link: "/Support"
+                    },
+                ],
             },
+
+            {
+                title: "Expolore",
+                paths: [
+                    {
+                        title: "Privacy Policy",
+                        link: "/Privacy"
+                    },
+                    {
+                        title: "AbouTerms of UsetUs",
+                        link: "/AbouTerms"
+                    },
+                    {
+                        title: "Cookies",
+                        link: "/Cookies"
+                    },
+                ]
+
+            }
         ],
-        Explore: [
-            {
-                title: "Privacy Policy",
-                link: "/"
-            },
-            {
-                title: "AbouTerms of UsetUs",
-                link: "/"
-            },
-            {
-                title: "Cookies",
-                link: "/"
-            },
-        ]
+
+
+
     }
 }
 
 
 export const NAV_LINKS = [
     {
-        title: "Features",
+        title: "Pricing",
         navLinkUrl: "/"
     },
     {
@@ -188,6 +205,14 @@ export const NAV_LINKS = [
     },
     {
         title: "Blogs",
+        navLinkUrl: "/"
+    },
+    {
+        title: "Help Docs",
+        navLinkUrl: "/"
+    },
+    {
+        title: "Faq's",
         navLinkUrl: "/"
     },
 ] 

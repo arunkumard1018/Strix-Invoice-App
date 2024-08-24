@@ -64,7 +64,7 @@ export function Features() {
                     <h1 className="text-3xl font-bold">{HERO_PAGE_CONTENT.featuresHeading.title}</h1>
                     <p className="text-gray-600 mt-2">{HERO_PAGE_CONTENT.featuresHeading.description}</p>
                     <CustomButton className="mt-4 bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 font-medium">
-                        Try EasyInvoice for FREE
+                        Try Strix Invoice for FREE
                     </CustomButton>
                 </div>
 

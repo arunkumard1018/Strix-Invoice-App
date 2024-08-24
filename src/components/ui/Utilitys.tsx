@@ -47,6 +47,16 @@ export function FeatureCard({ title, description, icon }: { title: string, descr
 }
 
 
+export const AccordianItems = ({ item, className }: { item: { title: string, link: string }[], className: string }) => {
+    return (
+        <ul className=''>
+            {item.map((data, index) => (
+                <li key={index * 5} className={cn(className)}>{data.title}</li>
+            ))}
+        </ul>
+    )
+}
+
 
 // Motion Animations
 export function MotionYStatic({ children, delay = 0.5, y, duration = 1 }:

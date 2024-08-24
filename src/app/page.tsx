@@ -14,7 +14,7 @@ export default function Home() {
         <FeaturesImage />
         <Features />
       </div>
-      <FooterComponent className="px-3 sm:px-8 md:px-12 lg:px-48 bg-custom-blue" />
+      <FooterComponent className="px-4 sm:px-8 md:px-12 lg:px-48 bg-custom-blue" />
     </>
   );
 }

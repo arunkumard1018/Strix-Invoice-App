@@ -15,7 +15,7 @@ function HeaderComponent({ className }: { className?: string }) {
                         <DropdownMenuTrigger asChild>
                             <div className='w-[30px] h-[40px] relative sm:hidden'><Image src="/icons/svgs/hamburger.svg" alt='' fill sizes='w-40px h-40px' quality={100} /></div>
                         </DropdownMenuTrigger>
-                        <DropDownContnt />
+                        <DropDownContent />
                     </DropdownMenu>
                 </Link>
                 <div className='w-[40px] h-[40px] relative z-10'><Image src="/icons/nav-logo.jpg" alt='' fill sizes='w-40px h-40px' quality={100} /></div>
@@ -38,14 +38,15 @@ function HeaderComponent({ className }: { className?: string }) {
     )
 }
 
-function DropDownContnt() {
+function DropDownContent() {
     return (
         <>
             <DropdownMenuContent className='w-screen mt-1 rounded-none h-screen '>
-                <DropdownMenuLabel><Link href='/'>Logout</Link></DropdownMenuLabel>
+                <DropdownMenuLabel className='text-2xl text-black font-medium'><Link href='/'>ALL Features</Link></DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {NAV_LINKS.map((items, index) => (
-                    <DropdownMenuItem key={index * 5}>{items.title}</DropdownMenuItem>
+                    <DropdownMenuItem key={index * 5} className='text-2xl text-black font-medium py-4'>
+                        {items.title}</DropdownMenuItem>
                 ))}
             </DropdownMenuContent>
         </>
