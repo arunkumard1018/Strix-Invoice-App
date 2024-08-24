@@ -24,9 +24,10 @@ const config = {
       },
       colors: {
         custom: {
-          blue: "#002B67",
+          blue: "#16163f",
           orange:"#F0483E",
           voilate:"#002E36",
+          bgFeature:"#3a3ada",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
