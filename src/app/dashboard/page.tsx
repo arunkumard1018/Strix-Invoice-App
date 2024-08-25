@@ -1,9 +1,10 @@
-import React from 'react'
+import Dashboard from "@/components/dashboard-components/Dashboard"
 
-function DashboardPage() {
+export default function DashboardPage() {
   return (
-    <div>DashboardPage</div>
+    <>
+      {/* <Inventory/> */}
+      <Dashboard/>
+    </>
   )
 }
-
-export default DashboardPage
