@@ -1,3 +1,4 @@
+'use client'
 import {
     CircleUser,
     Home,
@@ -29,7 +30,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 function NavBar() {
     return (
         <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
@@ -45,14 +46,18 @@ function NavBar() {
                     </Button>
                 </SheetTrigger>
                 <SheetContent side="left" className="flex flex-col">
+
                     <nav className="grid gap-2 text-lg font-medium">
                         <Link
                             href="#"
                             className="flex items-center gap-2 text-lg font-semibold"
                         >
-                            <Package2 className="h-6 w-6" />
-                            <span className="sr-only">Acme Inc</span>
+                            <SheetTitle className="flex items-center space-x-3">
+                                <Package2 className="h-6 w-6" />
+                                <span className="" >StrixInvoice</span>
+                            </SheetTitle>
                         </Link>
+                        <SheetDescription /> 
                         <Link
                             href="#"
                             className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
