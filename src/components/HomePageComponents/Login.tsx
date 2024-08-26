@@ -60,7 +60,7 @@ const Login = () => {
                     </div>
                     <div className="text-center mt-6">
                         <p className="text-gray-500">
-                            Don't have an account? <a href="#" className="text-blue-500">Sign Up</a>
+                            Don&apos;t have an account? <a href="#" className="text-blue-500">Sign Up</a>
                         </p>
                     </div>
                 </form>
