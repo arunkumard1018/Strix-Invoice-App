@@ -2,6 +2,8 @@
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './card';
+import { Button } from './button';
 
 
 
@@ -54,6 +56,33 @@ export const AccordianItems = ({ item, className }: { item: { title: string, lin
                 <li key={index * 5} className={cn(className)}>{data.title}</li>
             ))}
         </ul>
+    )
+}
+
+
+/**
+ * 
+ * @returns UpgradeCard Component
+ */
+
+export function UpgradeCard() {
+    return (
+        <div className="mt-auto p-4">
+            <Card x-chunk="dashboard-02-chunk-0">
+                <CardHeader className="p-2 pt-0 md:p-4">
+                    <CardTitle>Upgrade to Pro</CardTitle>
+                    <CardDescription>
+                        Unlock all features and get unlimited access to our support
+                        team.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
+                    <Button size="sm" className="w-full">
+                        Upgrade
+                    </Button>
+                </CardContent>
+            </Card>
+        </div>
     )
 }
 
