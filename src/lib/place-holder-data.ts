@@ -207,12 +207,12 @@ export const NAV_LINKS = [
         title: "Blogs",
         navLinkUrl: "/"
     },
-    {
-        title: "Help Docs",
-        navLinkUrl: "/"
-    },
-    {
-        title: "Faq's",
-        navLinkUrl: "/"
-    },
+    // {
+    //     title: "Help Docs",
+    //     navLinkUrl: "/"
+    // },
+    // {
+    //     title: "Faq's",
+    //     navLinkUrl: "/"
+    // },
 ] 

@@ -1,4 +1,4 @@
-"use client"
+
 import { NAV_LINKS } from '@/lib/place-holder-data'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
