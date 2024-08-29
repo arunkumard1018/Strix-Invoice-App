@@ -1,7 +1,7 @@
 
 import { HERO_PAGE_CONTENT } from "@/lib/place-holder-data";
 import Image from "next/image";
-import { CustomButton, FeatureCard, MotionxInView } from "../ui/Utilitys";
+import { CustomButton, FeatureCard, MotionxInView } from "../ui/Utility";
 
 
 export function FeaturesImage() {

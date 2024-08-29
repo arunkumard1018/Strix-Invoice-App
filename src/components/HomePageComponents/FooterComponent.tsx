@@ -3,7 +3,7 @@ import React from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
 import { HERO_PAGE_CONTENT } from '@/lib/place-holder-data'
 import Link from 'next/link'
-import { AccordianItems } from '../ui/Utilitys'
+import { AccordianItems } from '../ui/Utility'
 
 function FooterComponent({ className }: { className?: string }) {
   return (

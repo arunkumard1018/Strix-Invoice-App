@@ -31,8 +31,9 @@ function HeaderComponent({ className }: { className?: string }) {
                         <Link key={index * 5} href={item.navLinkUrl}>{item.title}</Link>
                     ))}
                 </div>
-                <button className='px-3 py-1  text-custom-blue font-bold hover:bg-slate-100'>Log In</button>
-                <button className='px-3 py-1 bg-custom-blue text-white font-bold'>SIGN UP</button>
+                <Link href="/auth/login"><button className='px-2 py-1   text-custom-blue font-bold hover:bg-slate-100'>Log In</button></Link>
+                <Link href="/auth/register"><button className='px-3 py-1 bg-custom-blue text-white font-bold'>SIGN UP</button></Link>
+                
             </div>
         </nav>
     )

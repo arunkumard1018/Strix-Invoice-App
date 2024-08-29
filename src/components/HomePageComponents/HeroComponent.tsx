@@ -1,7 +1,7 @@
 
 import { HERO_PAGE_CONTENT } from '@/lib/place-holder-data'
 import Image from 'next/image'
-import { CustomButton, CustomDeatisCard, MotionXStatic, MotionYStatic } from '../ui/Utilitys'
+import { CustomButton, CustomDeatisCard, MotionXStatic, MotionYStatic } from '../ui/Utility'
 
 export function HeroSection() {
     return (
