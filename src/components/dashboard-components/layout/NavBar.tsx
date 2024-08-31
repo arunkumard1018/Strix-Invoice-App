@@ -7,6 +7,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 
+import { ThemeSelect } from "@/components/providers/ThemeSelect"
 import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
@@ -18,9 +19,11 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import DashboardLinks from "./DashboardLinks"
+import { cn } from "@/lib/utils"
 import { useState } from "react"
-function NavBar() {
+import DashboardLinks from "./DashboardLinks"
+
+function NavBar({className}:{className?:string}) {
 
     const [sheetOpen, setsheetOpen] = useState(false)
     function closeSheet(){
@@ -28,7 +31,7 @@ function NavBar() {
     }
 
     return (
-        <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+        <header className={cn("flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6",className)}>
             <Sheet open={sheetOpen} onOpenChange={setsheetOpen}>
                 <SheetTrigger asChild>
                     <Button
@@ -67,6 +70,7 @@ function NavBar() {
                     </div>
                 </form>
             </div>
+            <ThemeSelect/>
 
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>

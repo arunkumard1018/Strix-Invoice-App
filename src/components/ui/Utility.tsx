@@ -1,11 +1,10 @@
 'use client'
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './card';
-import { Button } from './button';
-import { INDIAN_STATES } from '@/lib/data';
 import Image from 'next/image';
+import { ReactNode } from 'react';
+import { Button } from './button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './card';
 
 
 
@@ -43,7 +42,7 @@ export function CustomDeatisCard({ icon, title, description, className }:
 export function FeatureCard({ title, description, icon }: { title: string, description: string, icon: string }) {
     return (
         <div className="bg-gray-100 p-6 rounded-lg text-center">
-            <Image src={icon} alt="" className="mx-auto w-12 h-12 mb-4" />
+            <Image src={icon} alt="" className="mx-auto w-12 h-12 mb-4" width={100} height={100} />
             <h3 className="text-xl font-bold">{title}</h3>
             <p className="text-gray-600 mt-2">{description}</p>
         </div>
@@ -208,4 +207,4 @@ function CustomLogo() {
 
 
 
-export { FormInput, FormSelect, Checkbox, CustomButton, CustomLogo }
+export { Checkbox, CustomButton, CustomLogo, FormInput, FormSelect };

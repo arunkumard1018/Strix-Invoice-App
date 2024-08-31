@@ -5,7 +5,7 @@ import { CustomButton, CustomDeatisCard, MotionXStatic, MotionYStatic } from '..
 
 export function HeroSection() {
     return (
-        <div className="flex flex-col md:flex-row items-center md:justify-between bg-custom-blue">
+        <div className="flex flex-col md:flex-row items-center md:justify-between">
             {/* Hero Text */}
             <MotionXStatic x={-50} duration={0.5}>
                 <div className="order-1 md:order-1 md:w-auto text-center md:text-left mb-12 md:mb-0 md:space-y-10">

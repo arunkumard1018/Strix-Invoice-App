@@ -1,40 +1,29 @@
-
-
-import { Button } from "@/components/ui/button"
-import {
-    Card,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
+import { BarChartComponent } from "./dashboard/ChartComponent"
+import { AddInvoiceCard, LatestInvoices, PriceCard } from "./dashboard/DashboardCards"
+import { LineChartComponent } from "./dashboard/LineChartComponent"
+import { PieChartComponent } from "./dashboard/PieChartComponent"
 
 function Dashboard() {
     return (
         <>
-            <div className="flex items-center">
-                <h1 className="text-lg font-semibold md:text-2xl">Dashboard</h1>
+            <div className="mt-14 grid grid-cols-1 gap-2 lg:grid lg:grid-cols-3 lg:gap-4 ">
+                <div className="grid gap-2 lg:gap-0">
+                    <AddInvoiceCard />
+                    <div className="grid grid-cols-3 gap-2">
+                        <PriceCard />
+                        <PriceCard />
+                        <PriceCard />
+                    </div>
+                </div>
+                <PieChartComponent />
+                <BarChartComponent />
             </div>
-            <AddInvoiceComponent/>
+            <LatestInvoices/>
+            <LineChartComponent/>
         </>
     )
 }
 
 export default Dashboard
 
-export function AddInvoiceComponent() {
-    return (
-        <Card className="sm:col-span-2">
-            <CardHeader className="pb-3">
-                <CardTitle>Your Orders</CardTitle>
-                <CardDescription className="text-balance max-w-lg leading-relaxed">
-                    Introducing Our Dynamic Orders Dashboard for Seamless Management and
-                    Insightful Analysis.
-                </CardDescription>
-            </CardHeader>
-            <CardFooter>
-                <Button>Create New Order</Button>
-            </CardFooter>
-        </Card>
-    )
-}
+
