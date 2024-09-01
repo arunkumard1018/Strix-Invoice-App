@@ -1,9 +1,10 @@
 import {
     FileText,
     Home,
+    Landmark,
     LineChart,
-    Users,
-    Landmark
+    Package,
+    Users
 } from "lucide-react";
 
 export const DASHBOARD_SIDE_BAR_LINKS = [
@@ -26,6 +27,11 @@ export const DASHBOARD_SIDE_BAR_LINKS = [
         title: "Organizations",
         pathname: "/dashboard/organizations",
         icon : Landmark,
+    },
+    {
+        title: "Products",
+        pathname: "/dashboard/products",
+        icon : Package,
     },
     {
         title: "Analytics",

@@ -10,7 +10,7 @@ function DashboardLinks({ navClassName, LinkClassName, onLinkClick }:
     const pathname = usePathname();
     return (
         <div className="flex-1">
-            <nav className={cn("grid items-start px-2 text-sm font-medium lg:px-4", navClassName)}>
+            <nav className={cn("grid items-start px-2 text-sm font-medium lg:px-4 gap-y-2", navClassName)}>
                 {DASHBOARD_SIDE_BAR_LINKS.map((item) => (
                     <Link
                         key={item.pathname}

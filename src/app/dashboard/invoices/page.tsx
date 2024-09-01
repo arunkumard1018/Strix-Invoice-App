@@ -1,8 +1,11 @@
-import React from 'react'
+import { InvoiceTable } from "@/components/dashboard-components/invoices/InvoiceTable"
 
 function Invoice() {
   return (
-    <div className='text-4xl text-center text-green-400'>Invoice Page</div>
+    <>
+      <InvoiceTable  />
+    </>
+
   )
 }
 
