@@ -14,8 +14,8 @@ function DashBoardLayout({ children }: { children: ReactNode }) {
             <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
                 <AsideBar className='w-[20vw] fixed h-screen'/>
                 <div className="flex flex-col">
-                    <NavBar className='fixed w-full md:ml-[20vw]'/>
-                    <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+                    <NavBar className='fixed w-screen md:ml-[20vw] md:w-[80vw]'/>
+                    <main className="mt-14 md:ml-[20vw] md:w-[80vw] -z-50 md:pr-4">
                         {children}
                     </main>
                 </div>

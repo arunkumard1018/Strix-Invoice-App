@@ -23,15 +23,15 @@ import { cn } from "@/lib/utils"
 import { useState } from "react"
 import DashboardLinks from "./DashboardLinks"
 
-function NavBar({className}:{className?:string}) {
+function NavBar({ className }: { className?: string }) {
 
     const [sheetOpen, setsheetOpen] = useState(false)
-    function closeSheet(){
+    function closeSheet() {
         setsheetOpen(!sheetOpen);
     }
 
     return (
-        <header className={cn("flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6",className)}>
+        <header className={cn("flex h-14 items-center gap-4 border-b bg-muted/100 px-4 lg:h-[60px] lg:px-6", className)}>
             <Sheet open={sheetOpen} onOpenChange={setsheetOpen}>
                 <SheetTrigger asChild>
                     <Button
@@ -53,7 +53,7 @@ function NavBar({className}:{className?:string}) {
                             </SheetTitle>
                         </Link>
                         <SheetDescription />
-                        <DashboardLinks navClassName="px-0" LinkClassName="px-2" onLinkClick={closeSheet}/>
+                        <DashboardLinks navClassName="px-0" LinkClassName="px-2" onLinkClick={closeSheet} />
                     </nav>
                 </SheetContent>
             </Sheet>
@@ -70,29 +70,40 @@ function NavBar({className}:{className?:string}) {
                     </div>
                 </form>
             </div>
-            <ThemeSelect/>
 
-            <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                    <Button variant="secondary" size="icon" className="rounded-full">
-                        <CircleUser className="h-5 w-5" />
-                        <span className="sr-only">Toggle user menu</span>
-                    </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <Link href="#"><DropdownMenuItem>Profile</DropdownMenuItem></Link>
-                    <Link href="#"><DropdownMenuItem>Settings</DropdownMenuItem></Link>
-                    <Link href="#"><DropdownMenuItem>Support</DropdownMenuItem></Link>
-                    <DropdownMenuSeparator />
-                    <Link href="/"><DropdownMenuItem>Logout</DropdownMenuItem></Link>
-                </DropdownMenuContent>
-            </DropdownMenu>
+                    <ThemeSelect />
+                    <UserMenu />
+
+
 
 
         </header>
     )
 }
+
+import React from 'react'
+
+export const UserMenu = () => {
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="secondary" size="icon" className="rounded-full">
+                    <CircleUser className="h-5 w-5" />
+                    <span className="sr-only">Toggle user menu</span>
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <Link href="#"><DropdownMenuItem>Profile</DropdownMenuItem></Link>
+                <Link href="#"><DropdownMenuItem>Settings</DropdownMenuItem></Link>
+                <Link href="#"><DropdownMenuItem>Support</DropdownMenuItem></Link>
+                <DropdownMenuSeparator />
+                <Link href="/"><DropdownMenuItem>Logout</DropdownMenuItem></Link>
+            </DropdownMenuContent>
+        </DropdownMenu>
+    )
+}
+
 
 export default NavBar
