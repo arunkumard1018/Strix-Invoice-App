@@ -1,6 +1,6 @@
 
 
-interface FormInputProps {
+export interface FormInputProps {
     type: string;
     name: string;
     value: string;
@@ -9,7 +9,7 @@ interface FormInputProps {
     className?: string;
 }
 
-interface FormSelectProps {
+export interface FormSelectProps {
     value: string;
     name: string;
     option: string[];

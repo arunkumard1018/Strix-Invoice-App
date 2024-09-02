@@ -5,16 +5,6 @@ import React from 'react'
 
 function Dashboardlayout({ children }: { children: React.ReactNode }) {
     return (
-
-        // <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-        //     <AsideBar className='w-[20vw] fixed h-screen' />
-        //     <div className="flex flex-col">
-        //         <NavBar className='fixed w-screen md:ml-[20vw] md:w-[80vw] z-50' />
-        //         <main className="mt-14 md:ml-[20vw] md:w-[80vw] md:pr-4">
-        //             {children}
-        //         </main>
-        //     </div>
-        // </div>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
                 <AsideBar className="fixed inset-y-0 left-0 z-10 hidden  w-[16vw] flex-col border-r bg-background md:flex" />

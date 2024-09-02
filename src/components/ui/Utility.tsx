@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { ReactNode } from 'react';
 import { Button } from './button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './card';
+import { FormInputProps, FormSelectProps } from '@/types/CustomTypes';
 
 
 
