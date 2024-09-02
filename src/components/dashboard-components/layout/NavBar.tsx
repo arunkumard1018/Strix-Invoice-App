@@ -31,7 +31,7 @@ function NavBar({ className }: { className?: string }) {
     }
 
     return (
-        <header className={cn("flex h-14 items-center gap-4 border-b bg-muted/100 px-4 lg:h-[60px] lg:px-6", className)}>
+        <header className={cn("flex items-center border-b bg-muted/100 space-x-2 px-2 md:px-0", className)}>
             <Sheet open={sheetOpen} onOpenChange={setsheetOpen}>
                 <SheetTrigger asChild>
                     <Button
@@ -65,18 +65,13 @@ function NavBar({ className }: { className?: string }) {
                         <Input
                             type="search"
                             placeholder="Search products..."
-                            className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
+                            className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3 outline-none border-none"
                         />
                     </div>
                 </form>
             </div>
-
-                    <ThemeSelect />
-                    <UserMenu />
-
-
-
-
+            <ThemeSelect />
+            <UserMenu />
         </header>
     )
 }

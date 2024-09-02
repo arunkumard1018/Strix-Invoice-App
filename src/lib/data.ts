@@ -1,4 +1,4 @@
-import { Payment } from "@/types/CustomTypes";
+import { Business, Payment } from "@/types/CustomTypes";
 
 export const INDIAN_STATES: string[] = [
     'Select State',
@@ -156,7 +156,52 @@ export const payments: Payment[] = [
         id: "489e1d42",
         amount: 125,
         status: "processing",
-        email: "example@gmail.com",
+        email: "arun@gmail.com",
     },
     // ...
+]
+
+// id: string
+// businessLogo:string
+// BusinessName: String
+// revenue:number
+// totalInvoices:number
+// totalRevenue:number
+export const business: Business[] = [
+    {
+        id: "728ed52f",
+        BusinessName:"KG Enterprises",
+        businessLogo: "/login-bg.jpg",
+        revenue: 850045,
+        totalInvoices: 45,
+    },
+    {
+        id: "728ed52k",
+        BusinessName:"SG Enterprises",
+        businessLogo: "/login-bg.jpg",
+        revenue: 850045,
+        totalInvoices: 45,
+    },
+    {
+        id: "728ed526",
+        BusinessName:"AG Enterprises",
+        businessLogo: "/login-bg.jpg",
+        revenue: 850045,
+        totalInvoices: 45,
+    },
+    {
+        id: "728ed524",
+        BusinessName:"RGL Enterprises",
+        businessLogo: "/login-bg.jpg",
+        revenue: 850045,
+        totalInvoices: 45,
+    },
+
+]
+
+
+export const ORGANASATIONS = [
+    {
+        
+    }
 ]

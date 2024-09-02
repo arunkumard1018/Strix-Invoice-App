@@ -1,7 +1,7 @@
 'use client'
-import { DASHBOARD_SIDE_BAR_LINKS } from "@/lib/dashboard-data"
+import { DASHBOARD_SIDE_BAR_LINKS } from "@/lib/dashboard-data";
 import { cn } from "@/lib/utils";
-import Link from "next/link"
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 

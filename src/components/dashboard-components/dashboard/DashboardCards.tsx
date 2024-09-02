@@ -2,6 +2,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import Link from 'next/link'
 
 function PriceCard() {
     return (
@@ -29,7 +30,7 @@ function AddInvoiceCard() {
                 </CardDescription>
             </CardHeader>
             <CardFooter>
-                <Button>Create New Invoice</Button>
+                <Link href="/dashboard/invoices/create-invoice"><Button>Create New Invoice</Button></Link>
             </CardFooter>
         </Card></div>
     )
@@ -40,7 +41,7 @@ function AddInvoiceCard() {
 function LatestInvoices() {
     return (
             <Card>
-                <CardHeader className="px-7">
+                <CardHeader className="">
                     <CardTitle>Latest Invoices</CardTitle>
                     <CardDescription>Latest Invoices from your store.</CardDescription>
                 </CardHeader>

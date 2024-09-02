@@ -25,3 +25,12 @@ export type Payment = {
     status: "pending" | "processing" | "success" | "failed"
     email: string
 }
+
+
+export type Business = {
+    id: string
+    businessLogo:string
+    BusinessName: String
+    revenue:number
+    totalInvoices:number
+}

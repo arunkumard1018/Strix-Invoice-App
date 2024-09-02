@@ -24,8 +24,8 @@ export const DASHBOARD_SIDE_BAR_LINKS = [
         icon:Users,
     },
     {
-        title: "Organizations",
-        pathname: "/dashboard/organizations",
+        title: "Business",
+        pathname: "/dashboard/business",
         icon : Landmark,
     },
     {

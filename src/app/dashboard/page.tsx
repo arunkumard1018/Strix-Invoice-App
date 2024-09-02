@@ -5,11 +5,11 @@ import { PieChartComponent } from "@/components/dashboard-components/dashboard/P
 
 function page() {
   return (
-    <div className="grid gap-2 p-2 md:p-4 -z-50">
-      <div className=" grid grid-cols-1 gap-2 lg:grid lg:grid-cols-3 lg:gap-4">
-        <div className="grid gap-2 lg:gap-0">
+    <div className="grid gap-4 p-2 sm:p-4 -z-50">
+      <div className=" grid gap-4 grid-cols-1 lg:grid lg:grid-cols-3">
+        <div className="grid gap-4">
           <AddInvoiceCard />
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid gap-4 grid-cols-3">
             <PriceCard />
             <PriceCard />
             <PriceCard />
