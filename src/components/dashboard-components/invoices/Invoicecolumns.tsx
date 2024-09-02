@@ -4,6 +4,7 @@ import {
     ColumnDef
 } from "@tanstack/react-table"
 
+import { TableColumnHeader } from "@/components/reusable/table-elements/TableColumnHeader"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
@@ -15,7 +16,7 @@ import {
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
 import { Payment } from "@/types/CustomTypes"
-import { ChevronsUpDown, MoreHorizontal } from "lucide-react"
+import { MoreHorizontal } from "lucide-react"
 
 // This type is used to define the shape of our data.
 // we can use a Zod schema here if we want.
@@ -48,15 +49,7 @@ export const Invoicecolumns: ColumnDef<Payment>[] = [
         accessorKey: "email",
         header: ({ column }) => {
             return (
-                <Button
-                    className=""
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")} >
-                    <div className="flex items-center justify-center">
-                        <div>Email</div>
-                        <ChevronsUpDown className="ml-2 h-4 w-4" />
-                    </div>
-                </Button>
+                <TableColumnHeader column={column} title="Email" isMobileHidden={false} />
             )
         },
         cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
@@ -80,9 +73,12 @@ export const Invoicecolumns: ColumnDef<Payment>[] = [
 
     {
         accessorKey: "status",
-        header: ()=> <div className="hidden md:table-cell">Status</div>,
+        header: ({ column }) => (
+            
+            <TableColumnHeader column={column} title="Status" isMobileHidden />
+        ),
         cell: ({ row }) => (
-            <div className="capitalize hidden md:table-cell">{row.getValue("status")}</div>
+            <div className="capitalize">{row.getValue("status")}</div>
         ),
     },
 
@@ -91,7 +87,6 @@ export const Invoicecolumns: ColumnDef<Payment>[] = [
         enableHiding: false,
         cell: ({ row }) => {
             const payment = row.original
-
             return (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>

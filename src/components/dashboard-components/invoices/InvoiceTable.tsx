@@ -20,7 +20,7 @@ import {
     TabsTrigger
 } from "@/components/ui/tabs"
 
-import { TableComponent } from "@/components/reusable/TableComponent"
+import { TableComponent } from "@/components/reusable/table-elements/TableComponent"
 import { payments } from "@/lib/data"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
@@ -44,7 +44,6 @@ export function InvoiceTable({ className }: { className?: string }) {
                             <TabsList>
                                 <TabsTrigger value="all">All</TabsTrigger>
                                 <TabsTrigger value="active">Active</TabsTrigger>
-                                <TabsTrigger value="draft">Draft</TabsTrigger>
                                 <TabsTrigger value="archived" className="hidden sm:flex">
                                     Archived
                                 </TabsTrigger>
@@ -82,7 +81,7 @@ export function InvoiceTable({ className }: { className?: string }) {
                                 <Link href="invoices/create-invoice">
                                     <Button size="sm" className="h-7 gap-1">
                                         <PlusCircle className="h-3.5 w-3.5" />
-                                        <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                                        <span className=" sm:not-sr-only sm:whitespace-nowrap">
                                             Add Invoice
                                         </span>
                                     </Button>

@@ -1,0 +1,82 @@
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { cn } from "@/lib/utils"
+import { Column } from "@tanstack/react-table"
+import { ArrowBigDown, ArrowDown, ArrowUpIcon, ChevronsUpDown, EyeOff } from "lucide-react"
+import { useEffect, useState } from "react"
+
+
+/**
+ * Data Table Column Options
+ */
+
+interface DataTableColumnHeaderProps<TData, TValue>
+    extends React.HTMLAttributes<HTMLDivElement> {
+    column: Column<TData, TValue>
+    title: string
+    isMobileHidden: boolean
+}
+
+export function TableColumnHeader<TData, TValue>({
+    column,
+    title,
+    isMobileHidden,
+    className,
+}: DataTableColumnHeaderProps<TData, TValue>) {
+    if (!column.getCanSort()) {
+        return <div className={cn(className)}>{title}</div>
+    }
+    
+    useEffect(() => {
+        const checkScreenSize = () => {
+            if (isMobileHidden && window.innerWidth < 768) {
+                column.toggleVisibility(false)
+            } else {
+                column.toggleVisibility(true)
+            }
+        };
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
+
+    return (
+        <div className={cn("flex items-center space-x-2", className)}>
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className="-ml-3 h-8 data-[state=open]:bg-accent"
+                    >
+                        <span>{title}</span>
+                        {column.getIsSorted() === "desc" ? (
+                            <ChevronsUpDown className="ml-2 h-4 w-4" />
+                        ) : column.getIsSorted() === "asc" ? (
+                            <ArrowUpIcon className="ml-2 h-4 w-4" />
+                        ) : (
+                            <ChevronsUpDown className="ml-2 h-4 w-4" />
+                        )}
+                    </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start">
+                    <DropdownMenuItem onClick={() => column.toggleSorting(false)}>
+                        <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+                        Asc
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
+                        <ArrowDown className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+                        Desc
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
+                        <EyeOff className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+                        Hide
+                    </DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
+        </div>
+    )
+}

@@ -1,14 +1,12 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { TabsContent } from "@/components/ui/tabs"
 import { ColumnDef, ColumnFiltersState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable, VisibilityState } from "@tanstack/react-table"
-import { ChevronDown } from "lucide-react"
 import React from "react"
-
+import { DataTableViewOptions } from "./TableOptions"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -16,7 +14,8 @@ interface DataTableProps<TData, TValue> {
     heading: string
     headingInfo: string
     isSearchInputRequired: boolean
-    searchInputValue: string,
+    searchInputValue: string
+    isSelectAvailable? : boolean
 }
 
 export function TableComponent<TData, TValue>(
@@ -26,7 +25,8 @@ export function TableComponent<TData, TValue>(
         heading,
         headingInfo,
         isSearchInputRequired,
-        searchInputValue
+        searchInputValue,
+        isSelectAvailable = true
     }: DataTableProps<TData, TValue>) {
 
     const [sorting, setSorting] = React.useState<SortingState>([])
@@ -54,62 +54,33 @@ export function TableComponent<TData, TValue>(
     })
 
 
-    const ColumnSelectFilterDropDown = () => {
-        return (
-            <div className="flex items-center space-x-4">
-                <div className="hidden md:flex items-center py-4">
-                    {isSearchInputRequired &&
-                        <Input
-                            placeholder={`Filter By ${searchInputValue}...`}
-                            value={(table.getColumn(searchInputValue)?.getFilterValue() as string) ?? ""}
-                            onChange={(event) =>
-                                table.getColumn(searchInputValue)?.setFilterValue(event.target.value)
-                            }
-                            className="max-w-sm"
-                        />}
-                </div>
-
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="ml-auto">
-                            Columns <ChevronDown className="ml-2  w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        {table
-                            .getAllColumns()
-                            .filter((column) => column.getCanHide())
-                            .map((column) => {
-                                return (
-                                    <DropdownMenuCheckboxItem
-                                        key={column.id}
-                                        className="capitalize"
-                                        checked={column.getIsVisible()}
-                                        onCheckedChange={(value) =>
-                                            column.toggleVisibility(!!value)
-                                        }
-                                    >
-                                        {column.id}
-                                    </DropdownMenuCheckboxItem>
-                                )
-                            })}
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            </div>
-        )
-    }
-
 
     return (
         <TabsContent value="all">
             <Card x-chunk="dashboard-06-chunk-0">
+                {/* Table Header */}
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div>
                         <CardTitle>{heading}</CardTitle>
                         <CardDescription>{headingInfo}</CardDescription>
                     </div>
-                    <ColumnSelectFilterDropDown />
+                    <div className="flex items-center space-x-4">
+                        <div className="hidden md:flex items-center py-4">
+                            {isSearchInputRequired &&
+                                <Input
+                                    placeholder={`Filter By ${searchInputValue}...`}
+                                    value={(table.getColumn(searchInputValue)?.getFilterValue() as string) ?? ""}
+                                    onChange={(event) =>
+                                        table.getColumn(searchInputValue)?.setFilterValue(event.target.value)
+                                    }
+                                    className="max-w-sm"
+                                />}
+                        </div>
+                        {/* Table Column View Options */}
+                        <DataTableViewOptions table={table} />
+                    </div>
                 </CardHeader>
+
                 <CardContent>
                     <Table>
                         <TableHeader className="bg-accent">
@@ -166,28 +137,26 @@ export function TableComponent<TData, TValue>(
                         Showing <strong>1-10</strong> of <strong>32</strong>{" "}
                         {heading}
 
-                        <div className="flex-1 text-sm text-muted-foreground">
+                        {isSelectAvailable && <div className="flex-1 text-sm text-muted-foreground">
                             {table.getFilteredSelectedRowModel().rows.length} of{" "}
                             {table.getFilteredRowModel().rows.length} row(s) selected.
-                        </div>
+                        </div>}
                     </div>
 
                     <div className="flex items-center justify-end space-x-2 py-4">
-                        <div className="space-x-2">
+                        <div className="space-x-2 flex">
                             <Button
                                 variant="outline"
                                 size="sm"
                                 onClick={() => table.previousPage()}
-                                disabled={!table.getCanPreviousPage()}
-                            >
+                                disabled={!table.getCanPreviousPage()}>
                                 Previous
                             </Button>
                             <Button
                                 variant="outline"
                                 size="sm"
                                 onClick={() => table.nextPage()}
-                                disabled={!table.getCanNextPage()}
-                            >
+                                disabled={!table.getCanNextPage()}>
                                 Next
                             </Button>
                         </div>
@@ -198,4 +167,7 @@ export function TableComponent<TData, TValue>(
         </TabsContent>
     )
 }
+
+
+
 

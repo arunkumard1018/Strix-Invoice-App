@@ -16,6 +16,7 @@ import {
 import { Business } from "@/types/CustomTypes"
 import { ChevronsUpDown, MoreHorizontal } from "lucide-react"
 import Image from "next/image"
+import { TableColumnHeader } from "@/components/reusable/table-elements/TableColumnHeader"
 
 // This type is used to define the shape of our data.
 // we can use a Zod schema here if we want.
@@ -35,7 +36,7 @@ export const Businesscolumns: ColumnDef<Business>[] = [
 
     {
         accessorKey: "businessLogo",
-        header: "",
+        header: "Logo",
         cell: ({ row }) => (
             <Image
                 alt="Product image"
@@ -62,8 +63,6 @@ export const Businesscolumns: ColumnDef<Business>[] = [
     cell: ({ row }) => <div className="capitalize">{row.getValue("BusinessName")}</div>,
     },
 
-    
-
     {
         accessorKey: "totalInvoices",
         header: "Total Invoices",
@@ -74,17 +73,15 @@ export const Businesscolumns: ColumnDef<Business>[] = [
     
     {
         accessorKey: "revenue",
-        header: () => <div className="hidden sm:table-cell">Revenue</div>,
+        header: ({column}) => <TableColumnHeader column={column} title="Revenue" isMobileHidden/>,
         cell: ({ row }) => {
             const amount = parseFloat(row.getValue("revenue"))
-
-            // Format the amount as a dollar amount
             const formatted = new Intl.NumberFormat("en-US", {
                 style: "currency",
                 currency: "INR",
             }).format(amount)
 
-            return <div className="font-medium hidden sm:table-cell">{formatted}</div>
+            return <div className="font-medium">{formatted}</div>
         },
     },
 
@@ -93,7 +90,6 @@ export const Businesscolumns: ColumnDef<Business>[] = [
         enableHiding: false,
         cell: ({ row }) => {
             const business = row.original
-
             return (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
