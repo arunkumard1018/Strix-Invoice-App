@@ -32,6 +32,7 @@ export const Customerscolumns: ColumnDef<Customers>[] = [
 
 
     {
+        id: "name",
         accessorKey: "name",
         header: ({ column }) => {
             return (
@@ -51,6 +52,7 @@ export const Customerscolumns: ColumnDef<Customers>[] = [
     },
 
     {
+        id: "city",
         accessorKey: "city",
         header: ({ column }) => {
             return (
@@ -61,6 +63,7 @@ export const Customerscolumns: ColumnDef<Customers>[] = [
     },
 
     {
+        id: "GSTIN",
         accessorKey: "GSTIN",
         header: ({ column }) => {
             return (
@@ -70,6 +73,7 @@ export const Customerscolumns: ColumnDef<Customers>[] = [
         cell: ({ row }) => <div className="capitalize">{row.getValue("GSTIN")}</div>,
     },
     {
+        id: "phone",
         accessorKey: "phone",
         header: ({ column }) => {
             return (

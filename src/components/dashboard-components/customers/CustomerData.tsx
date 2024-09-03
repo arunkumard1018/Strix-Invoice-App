@@ -32,7 +32,9 @@ function CustomerData({className}:{className?:string}) {
                                 </Link>
                             </div>
                         </div>
-                        <TableComponent columns={Customerscolumns} data={CustomersData} heading="Customers" headingInfo="Manage your Customers and view their status." isSearchInputRequired searchInputValue="name" />
+                        <TableComponent columns={Customerscolumns} data={CustomersData} heading="Customers" headingInfo="Manage your Customers and view their status." 
+                        smHiddenCells={["city","GSTIN","phone"]}
+                        isSearchInputRequired searchInputValue="name" />
                     </Tabs>
                 </div>
             </div>

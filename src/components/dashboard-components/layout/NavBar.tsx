@@ -31,7 +31,7 @@ function NavBar({ className }: { className?: string }) {
     }
 
     return (
-        <header className={cn("flex items-center border-b bg-muted/100 space-x-2 px-2 md:px-0", className)}>
+        <header className={cn(" flex items-center border-b bg-muted/100 space-x-2 px-2 md:px-0", className)}>
             <Sheet open={sheetOpen} onOpenChange={setsheetOpen}>
                 <SheetTrigger asChild>
                     <Button
@@ -44,16 +44,16 @@ function NavBar({ className }: { className?: string }) {
                     </Button>
                 </SheetTrigger>
                 <SheetContent side="left" className="flex flex-col">
-                    <nav className="grid gap-2 text-lg font-medium">
+                    <nav className="grid  text-lg font-medium">
                         <Link href="#"
-                            className="flex items-center gap-2 text-lg font-semibold">
+                            className="flex items-center  text-lg font-semibold mb-4">
                             <SheetTitle className="flex items-center space-x-3">
                                 <Package2 className="h-6 w-6" />
-                                <span className="" >StrixInvoice</span>
+                                <span className="text-3xl" >StrixInvoice</span>
                             </SheetTitle>
                         </Link>
                         <SheetDescription />
-                        <DashboardLinks navClassName="px-0" LinkClassName="px-2" onLinkClick={closeSheet} />
+                        <DashboardLinks navClassName="px-0 py-4 " LinkClassName="px-2 py-2 text-lg" onLinkClick={closeSheet} />
                     </nav>
                 </SheetContent>
             </Sheet>

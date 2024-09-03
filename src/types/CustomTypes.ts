@@ -25,6 +25,7 @@ export type Payment = {
     amount: number
     status: "pending" | "processing" | "success" | "failed"
     email: string
+    isHidden?:boolean
 }
 
 

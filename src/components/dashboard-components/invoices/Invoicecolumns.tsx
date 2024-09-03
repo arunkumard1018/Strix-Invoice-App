@@ -16,6 +16,7 @@ import { Payment } from "@/types/CustomTypes"
 export const Invoicecolumns: ColumnDef<Payment>[] = [
     {
         id: "select",
+        accessorKey:"select",
         header: ({ table }) => (
             <Checkbox
                 checked={
@@ -38,6 +39,7 @@ export const Invoicecolumns: ColumnDef<Payment>[] = [
     },
 
     {
+        id: "id",
         accessorKey: "id",
         header: ({ column }) => {
             return (
@@ -48,16 +50,18 @@ export const Invoicecolumns: ColumnDef<Payment>[] = [
     },
 
     {
+        id: "email",
         accessorKey: "email",
         header: ({ column }) => {
             return (
-                <TableColumnHeader column={column} title="Email" isMobileHidden className="hidden md:table-cell" />
+                <TableColumnHeader column={column} title="Email" isMobileHidden className="" />
             )
         },
-        cell: ({ row }) => <div className="lowercase hidden md:table-cell">{row.getValue("email")}</div>,
+        cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
     },
 
     {
+        id: "amount",
         accessorKey: "amount",
         header: "Amount",
         cell: ({ row }) => {
@@ -74,18 +78,23 @@ export const Invoicecolumns: ColumnDef<Payment>[] = [
     },
 
     {
+        id: "status",
         accessorKey: "status",
-        header: ({ column }) => (
-
-            <TableColumnHeader column={column} title="Status" isMobileHidden className="hidden md:table-cell" />
-        ),
-        cell: ({ row }) => (
-            <div className="capitalize hidden md:table-cell">{row.getValue("status")}</div>
-        ),
+        header: ({ column}) => {
+            return (
+                <TableColumnHeader column={column} title="Status" isMobileHidden className="" />
+            )
+        },
+        cell: ({ row }) => {
+            return (
+                <div className="capitalize">{row.getValue("status")}</div>
+            )
+        },
     },
 
     {
         id: "actions",
+        accessorKey:"actions",
         enableHiding: false,
         cell: ({ row }) => {
             const payment = row.original

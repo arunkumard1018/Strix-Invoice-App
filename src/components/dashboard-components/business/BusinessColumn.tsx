@@ -4,20 +4,11 @@ import {
     ColumnDef
 } from "@tanstack/react-table"
 
-import { Button } from "@/components/ui/button"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu"
-import { Business } from "@/types/CustomTypes"
-import { ChevronsUpDown, MoreHorizontal } from "lucide-react"
-import Image from "next/image"
-import { TableColumnHeader } from "@/components/reusable/table-elements/TableColumnHeader"
 import { ActionsDropDownRow } from "@/components/reusable/table-elements/ActionDropDownRow"
+import { TableColumnHeader } from "@/components/reusable/table-elements/TableColumnHeader"
+import { Business } from "@/types/CustomTypes"
+import { ChevronsUpDown } from "lucide-react"
+import Image from "next/image"
 
 // This type is used to define the shape of our data.
 // we can use a Zod schema here if we want.
@@ -36,6 +27,7 @@ import { ActionsDropDownRow } from "@/components/reusable/table-elements/ActionD
 export const Businesscolumns: ColumnDef<Business>[] = [
 
     {
+        id: "businessLogo",
         accessorKey: "businessLogo",
         header: "Logo",
         cell: ({ row }) => (
@@ -52,6 +44,7 @@ export const Businesscolumns: ColumnDef<Business>[] = [
 
 
     {
+        id: "BusinessName",
         accessorKey: "BusinessName",
         header: ({ column }) => {
             return (
@@ -65,6 +58,7 @@ export const Businesscolumns: ColumnDef<Business>[] = [
     },
 
     {
+        id: "totalInvoices",
         accessorKey: "totalInvoices",
         header: "Total Invoices",
         cell: ({ row }) => (
@@ -73,8 +67,9 @@ export const Businesscolumns: ColumnDef<Business>[] = [
     },
     
     {
+        id: "revenue",
         accessorKey: "revenue",
-        header: ({column}) => <TableColumnHeader column={column} title="Revenue" isMobileHidden/>,
+        header: ({column}) => <TableColumnHeader column={column} title="Revenue"/>,
         cell: ({ row }) => {
             const amount = parseFloat(row.getValue("revenue"))
             const formatted = new Intl.NumberFormat("en-US", {

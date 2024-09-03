@@ -7,6 +7,7 @@ import { TabsContent } from "@/components/ui/tabs"
 import { ColumnDef, ColumnFiltersState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable, VisibilityState } from "@tanstack/react-table"
 import React from "react"
 import { DataTableViewOptions } from "./TableOptions"
+import { cn } from "@/lib/utils"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -16,6 +17,7 @@ interface DataTableProps<TData, TValue> {
     isSearchInputRequired: boolean
     searchInputValue: string
     isSelectAvailable?: boolean
+    smHiddenCells?: string[]
 }
 
 export function TableComponent<TData, TValue>(
@@ -26,7 +28,8 @@ export function TableComponent<TData, TValue>(
         headingInfo,
         isSearchInputRequired,
         searchInputValue,
-        isSelectAvailable = true
+        isSelectAvailable = true,
+        smHiddenCells
     }: DataTableProps<TData, TValue>) {
 
     const [sorting, setSorting] = React.useState<SortingState>([])
@@ -53,7 +56,6 @@ export function TableComponent<TData, TValue>(
         },
     })
 
-
     return (
         <TabsContent value="all">
             <Card x-chunk="dashboard-06-chunk-0">
@@ -63,6 +65,7 @@ export function TableComponent<TData, TValue>(
                         <CardTitle>{heading}</CardTitle>
                         <CardDescription>{headingInfo}</CardDescription>
                     </div>
+
                     <div className="flex items-center space-x-4">
                         <div className="hidden md:flex items-center py-4">
                             {isSearchInputRequired &&
@@ -82,61 +85,64 @@ export function TableComponent<TData, TValue>(
                 </CardHeader>
 
                 <CardContent>
-                    <Table>
-                        <TableHeader className="bg-accent">
-                            {table.getHeaderGroups().map((headerGroup) => (
+                    <div className="">
+                        <Table className="relative">
+                            <TableHeader className="bg-accent">
+                                {table.getHeaderGroups().map((headerGroup) => (
 
-                                <TableRow key={headerGroup.id}>
+                                    <TableRow key={headerGroup.id}>
+                                        {headerGroup.headers.map((header, index) => {
+                                            let val = columns[index].id ? smHiddenCells?.includes(columns[index].id) : undefined;
 
-                                    {headerGroup.headers.map((header) => {
-
-                                        return (
-                                            <TableHead key={header.id} >
-                                                {header.isPlaceholder
-                                                    ? null
-                                                    : flexRender(
-                                                        header.column.columnDef.header,
-                                                        header.getContext()
-                                                    )}
-                                            </TableHead>
-                                        )
-                                    })}
-
-                                </TableRow>
-                            ))}
-                        </TableHeader>
-
-                        <TableBody>
-                            {table.getRowModel().rows?.length ? (
-                                table.getRowModel().rows.map((row) => (
-                                    <TableRow
-                                        key={row.id}
-                                        data-state={row.getIsSelected() && "selected"}
-                                    >
-                                        {row.getVisibleCells().map((cell) => (
-
-                                            <TableCell key={cell.id}>
-                                                {flexRender(
-                                                    cell.column.columnDef.cell,
-                                                    cell.getContext()
-
-                                                )}
-                                            </TableCell>
-                                        ))}
+                                            return (
+                                                <TableHead key={header.id} className={cn(val && "hidden md:table-cell")} >
+                                                    {header.isPlaceholder
+                                                        ? null
+                                                        : flexRender(
+                                                            header.column.columnDef.header,
+                                                            header.getContext()
+                                                        )}
+                                                </TableHead>
+                                            )
+                                        })}
                                     </TableRow>
-                                ))
-                            ) : (
-                                <TableRow>
-                                    <TableCell
-                                        colSpan={columns.length}
-                                        className="h-24 text-center"
-                                    >
-                                        No results.
-                                    </TableCell>
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
+                                ))}
+                            </TableHeader>
+                            
+                            <TableBody>
+                                {table.getRowModel().rows?.length ? (
+                                    table.getRowModel().rows.map((row) => (
+                                        <TableRow
+                                            key={row.id}
+                                            data-state={row.getIsSelected() && "selected"}
+                                        >
+                                            {row.getVisibleCells().map((cell, index) => {
+                                                let val = columns[index].id ? smHiddenCells?.includes(columns[index].id) : undefined;
+                                                return (
+                                                    <TableCell key={cell.id} className={cn(val && "hidden md:table-cell")}>
+                                                        {flexRender(
+                                                            cell.column.columnDef.cell,
+                                                            cell.getContext()
+                                                        )}
+                                                    </TableCell>
+                                                )
+                                            }
+                                            )}
+                                        </TableRow>
+                                    ))
+                                ) : (
+                                    <TableRow>
+                                        <TableCell
+                                            colSpan={columns.length}
+                                            className="h-24 text-center"
+                                        >
+                                            No results.
+                                        </TableCell>
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
                     <div className="text-xs text-muted-foreground">

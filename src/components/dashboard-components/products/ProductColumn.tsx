@@ -1,16 +1,14 @@
 "use client"
 
 import {
-    Column,
     ColumnDef
 } from "@tanstack/react-table"
 
 import { ActionsDropDownRow } from "@/components/reusable/table-elements/ActionDropDownRow"
 import { TableColumnHeader } from "@/components/reusable/table-elements/TableColumnHeader"
+import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Product } from "@/types/CustomTypes"
-import { Badge } from "@/components/ui/badge"
-import { ChevronsUpDown } from "lucide-react"
 
 // This type is used to define the shape of our data.
 // we can use a Zod schema here if we want.
@@ -41,30 +39,33 @@ export const ProductColumns: ColumnDef<Product>[] = [
     },
 
     {
+        id: "SKU",
         accessorKey: "SKU",
         header: ({ column }) => {
             return (
-                <TableColumnHeader column={column} title="SKU" isMobileHidden className="hidden md:table-cell" NotSortable />
+                <TableColumnHeader column={column} title="SKU"  NotSortable />
             )
         },
-        cell: ({ row }) => <div className="uppercase hidden md:table-cell">{row.getValue("SKU")}</div>,
+        cell: ({ row }) => <div className="uppercase">{row.getValue("SKU")}</div>,
     },
 
     {
+        id: "name",
         accessorKey: "name",
         header: ({ column }) => {
             return (
-                <TableColumnHeader column={column} title="Product Name" isMobileHidden={false} />
+                <TableColumnHeader column={column} title="Product Name"  />
             )
         },
         cell: ({ row }) => <div className="capitalize">{row.getValue("name")}</div>,
     },
 
     {
+        id: "price",
         accessorKey: "price",
         header: ({ column }) => {
             return (
-                <TableColumnHeader column={column} title="Price" isMobileHidden={false} />
+                <TableColumnHeader column={column} title="Price" />
             )
         },
         cell: ({ row }) => {
@@ -78,29 +79,31 @@ export const ProductColumns: ColumnDef<Product>[] = [
     },
 
     {
+        id: "status",
         accessorKey: "status",
         header: ({ column }) => (
-            <TableColumnHeader column={column} title="Status" isMobileHidden className="hidden md:table-cell" NotSortable />
+            <TableColumnHeader column={column} title="Status"  NotSortable />
         ),
         cell: ({ row }) => (
-            <Badge className="text-xs capitalize hidden md:table-cell" variant="outline">
+            <Badge className="text-xs capitalize" variant="outline">
                 {row.getValue("status")}
             </Badge>
         ),
     },
 
     {
+        id: "GST",
         accessorKey: "GST",
         header: ({ column }) => (
-            <TableColumnHeader column={column} title="Status" isMobileHidden className="hidden md:table-cell" NotSortable />
+            <TableColumnHeader column={column} title="GST" NotSortable />
         ),
         cell: ({ row }) => {
             const product = row.original
             return (
-                <div className="md:flex hidden space-x-2">
+                <div className="flex space-x-2">
                     <div className="capitalize">{row.getValue("GST")}</div>
                     <div>
-                        <Badge className="text-xs capitalize hidden md:table-cell" variant="outline">
+                        <Badge className="text-xs capitalize" variant="outline">
                             {product.GST_VALUE}%
                         </Badge>
                     </div>
@@ -111,17 +114,17 @@ export const ProductColumns: ColumnDef<Product>[] = [
     },
 
     {
+        id: "discount",
         accessorKey: "discount",
         header: ({ column }) => (
-            <TableColumnHeader column={column} title="Discount" isMobileHidden className="hidden md:table-cell" NotSortable />
+            <TableColumnHeader column={column} title="Discount"  NotSortable />
         ),
         cell: ({ row }) => (
-            <div className=" capitalize hidden md:table-cell">
+            <div className=" capitalize ">
                 {row.getValue("discount")}%
             </div>
         ),
     },
-
 
     {
         id: "actions",

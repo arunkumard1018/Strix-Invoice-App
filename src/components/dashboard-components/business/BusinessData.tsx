@@ -38,7 +38,11 @@ export default function BusinessData() {
                         </div>
                     </div>
                     
-                    <TableComponent columns={Businesscolumns} data={business} heading="Business Details" headingInfo="Manage You Business" isSearchInputRequired={false} searchInputValue="" isSelectAvailable={false} />
+                    <TableComponent columns={Businesscolumns} data={business} heading="Business Details" headingInfo="Manage You Business" 
+                    smHiddenCells={["revenue"]}
+                    isSearchInputRequired={false} 
+                    searchInputValue="" 
+                    isSelectAvailable={false} />
                 </Tabs>
             </div>
         </div>

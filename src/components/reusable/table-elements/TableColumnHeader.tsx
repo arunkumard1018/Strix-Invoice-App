@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
 import { Column } from "@tanstack/react-table"
-import { ArrowBigDown, ArrowDown, ArrowUpIcon, ChevronsUpDown, EyeOff } from "lucide-react"
-import { useEffect, useState } from "react"
+import { ArrowDown, ArrowUpIcon, ChevronsUpDown, EyeOff } from "lucide-react"
 
 
 /**
@@ -16,7 +15,7 @@ interface DataTableColumnHeaderProps<TData, TValue>
     extends React.HTMLAttributes<HTMLDivElement> {
     column: Column<TData, TValue>
     title: string
-    isMobileHidden: boolean
+    isMobileHidden?: boolean
     NotSortable?: boolean
 }
 
@@ -31,18 +30,18 @@ export function TableColumnHeader<TData, TValue>({
         return <div className={cn(className)}>{title}</div>
     }
 
-    useEffect(() => {
-        const checkScreenSize = () => {
-            if (isMobileHidden && window.innerWidth < 768) {
-                column.toggleVisibility(false)
-            } else {
-                column.toggleVisibility(true)
-            }
-        };
-        checkScreenSize();
-        window.addEventListener('resize', checkScreenSize);
-        return () => window.removeEventListener('resize', checkScreenSize);
-    }, []);
+    // useEffect(() => {
+    //     const checkScreenSize = () => {
+    //         if (isMobileHidden && window.innerWidth < 768) {
+    //             column.toggleVisibility(false)
+    //         } else {
+    //             column.toggleVisibility(true)
+    //         }
+    //     };
+    //     checkScreenSize();
+    //     window.addEventListener('resize', checkScreenSize);
+    //     return () => window.removeEventListener('resize', checkScreenSize);
+    // });
 
     return (
         <div className={cn("flex items-center space-x-2", className)}>

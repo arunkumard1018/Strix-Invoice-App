@@ -89,7 +89,11 @@ export function ProductTable({ className }: { className?: string }) {
                             </div>
                         </div>
 
-                        <TableComponent columns={ProductColumns} data={ProductsData} heading="Products" headingInfo="Product Details" isSearchInputRequired searchInputValue="name" isSelectAvailable />
+                        <TableComponent columns={ProductColumns} data={ProductsData} heading="Products" headingInfo="Product Details" 
+                        smHiddenCells={["status","GST","discount","SKU"]}
+                        isSearchInputRequired 
+                        searchInputValue="name" 
+                        isSelectAvailable />
 
                     </Tabs>
                 </div>

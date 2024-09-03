@@ -15,7 +15,7 @@ export function DataTableViewOptions<TData>({
     table,
 }: DataTableViewOptionsProps<TData>) {
     return (
-        <div className="hidden sm:block">
+        <div className="hidden">
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="outline" className="ml-auto">

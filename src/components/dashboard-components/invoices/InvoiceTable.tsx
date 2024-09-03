@@ -26,10 +26,6 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { Invoicecolumns } from "./Invoicecolumns"
 
-export const description =
-    "An products dashboard with a sidebar navigation. The sidebar has icon navigation. The content area has a breadcrumb and search in the header. It displays a list of products in a table with actions."
-
-
 
 
 export function InvoiceTable({ className }: { className?: string }) {
@@ -88,7 +84,9 @@ export function InvoiceTable({ className }: { className?: string }) {
                                 </Link>
                             </div>
                         </div>
-                        <TableComponent data={payments} columns={Invoicecolumns} heading="Invoices" headingInfo="Manage your Invoices and view their status."  isSearchInputRequired searchInputValue="email"/>
+                        <TableComponent data={payments} columns={Invoicecolumns} heading="Invoices" headingInfo="Manage your Invoices and view their status."  
+                        smHiddenCells={["email","status"]}
+                        isSearchInputRequired searchInputValue="email"/>
                     </Tabs>
                 </div>
             </div>
