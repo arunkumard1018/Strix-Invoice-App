@@ -15,7 +15,7 @@ interface DataTableProps<TData, TValue> {
     headingInfo: string
     isSearchInputRequired: boolean
     searchInputValue: string
-    isSelectAvailable? : boolean
+    isSelectAvailable?: boolean
 }
 
 export function TableComponent<TData, TValue>(
@@ -54,7 +54,6 @@ export function TableComponent<TData, TValue>(
     })
 
 
-
     return (
         <TabsContent value="all">
             <Card x-chunk="dashboard-06-chunk-0">
@@ -76,6 +75,7 @@ export function TableComponent<TData, TValue>(
                                     className="max-w-sm"
                                 />}
                         </div>
+
                         {/* Table Column View Options */}
                         <DataTableViewOptions table={table} />
                     </div>
@@ -85,23 +85,27 @@ export function TableComponent<TData, TValue>(
                     <Table>
                         <TableHeader className="bg-accent">
                             {table.getHeaderGroups().map((headerGroup) => (
+
                                 <TableRow key={headerGroup.id}>
+
                                     {headerGroup.headers.map((header) => {
+
                                         return (
-                                            <TableHead key={header.id}>
+                                            <TableHead key={header.id} >
                                                 {header.isPlaceholder
                                                     ? null
                                                     : flexRender(
                                                         header.column.columnDef.header,
                                                         header.getContext()
                                                     )}
-
                                             </TableHead>
                                         )
                                     })}
+
                                 </TableRow>
                             ))}
                         </TableHeader>
+
                         <TableBody>
                             {table.getRowModel().rows?.length ? (
                                 table.getRowModel().rows.map((row) => (
@@ -110,10 +114,12 @@ export function TableComponent<TData, TValue>(
                                         data-state={row.getIsSelected() && "selected"}
                                     >
                                         {row.getVisibleCells().map((cell) => (
-                                            <TableCell key={cell.id} >
+
+                                            <TableCell key={cell.id}>
                                                 {flexRender(
                                                     cell.column.columnDef.cell,
                                                     cell.getContext()
+
                                                 )}
                                             </TableCell>
                                         ))}

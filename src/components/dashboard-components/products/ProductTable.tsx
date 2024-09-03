@@ -21,10 +21,10 @@ import {
 } from "@/components/ui/tabs"
 
 import { TableComponent } from "@/components/reusable/table-elements/TableComponent"
-import { payments } from "@/lib/data"
+import { ProductsData } from "@/lib/data"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
-import { Invoicecolumns } from "./Invoicecolumns"
+import { ProductColumns } from "./ProductColumn"
 
 export const description =
     "An products dashboard with a sidebar navigation. The sidebar has icon navigation. The content area has a breadcrumb and search in the header. It displays a list of products in a table with actions."
@@ -32,9 +32,9 @@ export const description =
 
 
 
-export function InvoiceTable({ className }: { className?: string }) {
+export function ProductTable({ className }: { className?: string }) {
 
-    
+
     return (
         <div className={cn("flex min-h-screen w-full flex-col bg-muted/40", className)}>
             <div className="flex flex-col sm:py-4">
@@ -63,9 +63,9 @@ export function InvoiceTable({ className }: { className?: string }) {
                                         <DropdownMenuLabel>Filter by</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuCheckboxItem checked>
-                                            Active
+                                            INSTOCK
                                         </DropdownMenuCheckboxItem>
-                                        <DropdownMenuCheckboxItem>Draft</DropdownMenuCheckboxItem>
+                                        <DropdownMenuCheckboxItem>OUTOFSTOCK</DropdownMenuCheckboxItem>
                                         <DropdownMenuCheckboxItem>
                                             Archived
                                         </DropdownMenuCheckboxItem>
@@ -82,13 +82,15 @@ export function InvoiceTable({ className }: { className?: string }) {
                                     <Button size="sm" className="h-7 gap-1">
                                         <PlusCircle className="h-3.5 w-3.5" />
                                         <span className=" sm:not-sr-only sm:whitespace-nowrap">
-                                            Add Invoice
+                                            Add Product
                                         </span>
                                     </Button>
                                 </Link>
                             </div>
                         </div>
-                        <TableComponent data={payments} columns={Invoicecolumns} heading="Invoices" headingInfo="Manage your Invoices and view their status."  isSearchInputRequired searchInputValue="email"/>
+
+                        <TableComponent columns={ProductColumns} data={ProductsData} heading="Products" headingInfo="Product Details" isSearchInputRequired searchInputValue="name" isSelectAvailable />
+
                     </Tabs>
                 </div>
             </div>

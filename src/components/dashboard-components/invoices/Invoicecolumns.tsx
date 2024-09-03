@@ -4,19 +4,10 @@ import {
     ColumnDef
 } from "@tanstack/react-table"
 
+import { ActionsDropDownRow } from "@/components/reusable/table-elements/ActionDropDownRow"
 import { TableColumnHeader } from "@/components/reusable/table-elements/TableColumnHeader"
-import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu"
 import { Payment } from "@/types/CustomTypes"
-import { MoreHorizontal } from "lucide-react"
 
 // This type is used to define the shape of our data.
 // we can use a Zod schema here if we want.
@@ -45,14 +36,25 @@ export const Invoicecolumns: ColumnDef<Payment>[] = [
         enableSorting: false,
         enableHiding: false,
     },
+
+    {
+        accessorKey: "id",
+        header: ({ column }) => {
+            return (
+                <TableColumnHeader column={column} title="Invoice id" isMobileHidden={false} className="" />
+            )
+        },
+        cell: ({ row }) => <div className="lowercase">{row.getValue("id")}</div>,
+    },
+
     {
         accessorKey: "email",
         header: ({ column }) => {
             return (
-                <TableColumnHeader column={column} title="Email" isMobileHidden={false} />
+                <TableColumnHeader column={column} title="Email" isMobileHidden className="hidden md:table-cell" />
             )
         },
-        cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+        cell: ({ row }) => <div className="lowercase hidden md:table-cell">{row.getValue("email")}</div>,
     },
 
     {
@@ -74,11 +76,11 @@ export const Invoicecolumns: ColumnDef<Payment>[] = [
     {
         accessorKey: "status",
         header: ({ column }) => (
-            
-            <TableColumnHeader column={column} title="Status" isMobileHidden />
+
+            <TableColumnHeader column={column} title="Status" isMobileHidden className="hidden md:table-cell" />
         ),
         cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("status")}</div>
+            <div className="capitalize hidden md:table-cell">{row.getValue("status")}</div>
         ),
     },
 
@@ -88,25 +90,8 @@ export const Invoicecolumns: ColumnDef<Payment>[] = [
         cell: ({ row }) => {
             const payment = row.original
             return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
-                            <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(payment.id)}
-                        >
-                            Copy payment ID
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>View customer</DropdownMenuItem>
-                        <DropdownMenuItem>View payment details</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <ActionsDropDownRow id={payment.id} name="Invoice" path="/dashboard/invoices" />
+
             )
         },
     },

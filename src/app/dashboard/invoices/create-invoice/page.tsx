@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ORGANASATIONS } from "@/lib/data";
+import { business } from "@/lib/data";
 import { Building2 } from "lucide-react";
 import Link from "next/link";
 
@@ -7,7 +7,7 @@ function Invoice() {
 
   return (
     <div>
-      {ORGANASATIONS.length === 0 ? <AddOrganasation /> : <div>Create Invoice</div>}
+      {business.length === 0 ? <AddOrganasation /> : <div>Create Invoice</div>}
     </div>
 
   )

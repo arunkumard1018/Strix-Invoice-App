@@ -17,6 +17,7 @@ import { Business } from "@/types/CustomTypes"
 import { ChevronsUpDown, MoreHorizontal } from "lucide-react"
 import Image from "next/image"
 import { TableColumnHeader } from "@/components/reusable/table-elements/TableColumnHeader"
+import { ActionsDropDownRow } from "@/components/reusable/table-elements/ActionDropDownRow"
 
 // This type is used to define the shape of our data.
 // we can use a Zod schema here if we want.
@@ -91,25 +92,7 @@ export const Businesscolumns: ColumnDef<Business>[] = [
         cell: ({ row }) => {
             const business = row.original
             return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
-                            <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(business.id)}
-                        >
-                            Copy payment ID
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>View customer</DropdownMenuItem>
-                        <DropdownMenuItem>View payment details</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <ActionsDropDownRow id={business.id} name="Business" path="/dashboard/business" />
             )
         },
     },
