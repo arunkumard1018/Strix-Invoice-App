@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Next Js Application for Invoice Management
+Next Js App
 
 <!-- First, run the development server: -->
 
