@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Next Js App
+Next Js App Ui For StrixInvoice
 
 <!-- First, run the development server: -->
 
